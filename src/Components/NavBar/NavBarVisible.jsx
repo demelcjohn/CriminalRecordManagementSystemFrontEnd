@@ -21,10 +21,13 @@ export default function NavBarVisible(props) {
         />
       </div>
       <div className="navbar_visible_item">
-        <Link to="/home/page1">Page1</Link>
+        <Link to="/addcase">Page1</Link>
       </div>
       <div className="navbar_visible_item">
-        <Link to="/home/page2">PAge2</Link>
+        <Link to="/allcase">View All Case</Link>
+      </div>
+      <div className="navbar_visible_item">
+        <Link>Search Case</Link>
       </div>
     </div>
   );

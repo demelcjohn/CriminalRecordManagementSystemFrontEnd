@@ -218,7 +218,7 @@ export default function ViewJudgement() {
                 <tr>
                   <td className="profile_page_table_col" colSpan={2}>
                     <StyledTextFieldLong
-                      label="FIR Nunber"
+                      label="FIR Number"
                       variant="standard"
                       value={first.fir_number}
                       focused

@@ -16,6 +16,9 @@ export default function NavWeb() {
   const search = () => {
     navigate("/searchcase");
   };
+  const settings = () => {
+    navigate("/settings");
+  };
   return (
     <div className="NavWeb_outerdiv">
       <div className="navweb_item" onClick={profile}>
@@ -29,6 +32,9 @@ export default function NavWeb() {
       </div>
       <div className="navweb_item" onClick={search}>
         Search Case
+      </div>
+      <div className="navweb_item" onClick={settings}>
+        Settings
       </div>
     </div>
   );

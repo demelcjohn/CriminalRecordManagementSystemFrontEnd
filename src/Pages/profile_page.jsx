@@ -96,9 +96,9 @@ export default function Profile_page() {
             <tr>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
-                  label="Gender"
+                  label="Authority"
                   variant="standard"
-                  value={user.gender}
+                  value={"QWERty Police Station"}
                   focused
                   style={{ color: "black" }}
                   disabled
@@ -106,83 +106,14 @@ export default function Profile_page() {
               </td>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
-                  label="DOB"
+                  label="Designation"
                   variant="standard"
-                  value={user.dob}
+                  value={"Sub Inspector"}
                   focused
                   style={{ color: "black" }}
                   disabled
                 />
               </td>
-            </tr>
-            <tr>
-              <td colSpan={2} className="profile_page_table_col">
-                <StyledTextFieldLong
-                  label="House Name"
-                  variant="standard"
-                  value={user.house_name}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="profile_page_table_col">
-                <StyledTextFieldShort
-                  label="Street"
-                  variant="standard"
-                  value={user.street}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-              <td className="profile_page_table_col">
-                <StyledTextFieldShort
-                  label="City"
-                  variant="standard"
-                  value={user.city}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="profile_page_table_col">
-                <StyledTextFieldShort
-                  label="State"
-                  variant="standard"
-                  value={user.state}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-              <td className="profile_page_table_col">
-                <StyledTextFieldShort
-                  label="PIN"
-                  variant="standard"
-                  value={user.pin}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-            </tr>
-            <tr>
-              <td className="profile_page_table_col">
-                <StyledTextFieldShort
-                  label="Country"
-                  variant="standard"
-                  value={user.gender}
-                  focused
-                  style={{ color: "black" }}
-                  disabled
-                />
-              </td>
-              <td></td>
             </tr>
           </table>
         </div>

@@ -4,8 +4,18 @@ import "../addCase.css";
 import { TextField, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import "../profile_page.css";
+import "./status.css";
+import CaseStatusBox from "../../Components/caseStatusBox";
 
 export default function Status_citizen() {
+  const caseIds = [
+    "123456",
+    "23456789",
+    "2345678",
+    "34567",
+    "4567878",
+    "456789",
+  ];
   const StyledTextFieldLong = styled(TextField)({
     color: "black",
     width: "90vw",
@@ -51,20 +61,15 @@ export default function Status_citizen() {
     <div className=" addCase_div">
       <NavBar></NavBar>
       <div className="addCase_Outerdiv">
-        <div className="profile_page_outerdiv">
-          {/* <Box
-            sx={{ width: "80%", height: "90%", bgcolor: "yellow" }}
+        <div className="container-box">
+          <Box
+            sx={{ width: "100%", height: "100%" }}
             fontSize={"100%"}
             fontWeight={"bold"}
             fontFamily={"sans-serif"}
-            overflow={"scroll"}
           >
-            {caseIds &&
-              caseIds.map((cases) => (
-                <CaseBox key={cases.case_id} id={cases.case_id} />
-              ))}
-            Hello
-          </Box> */}
+            {caseIds && caseIds.map((cases) => <CaseStatusBox id={cases} />)}
+          </Box>
         </div>
       </div>
     </div>

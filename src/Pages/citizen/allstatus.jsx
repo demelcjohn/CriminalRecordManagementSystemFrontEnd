@@ -52,19 +52,42 @@ export default function Status_all() {
       <NavBar></NavBar>
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
-          {/* <Box
-            sx={{ width: "80%", height: "90%", bgcolor: "yellow" }}
-            fontSize={"100%"}
-            fontWeight={"bold"}
-            fontFamily={"sans-serif"}
-            overflow={"scroll"}
-          >
-            {caseIds &&
-              caseIds.map((cases) => (
-                <CaseBox key={cases.case_id} id={cases.case_id} />
-              ))}
-            Hello
-          </Box> */}
+          <table className="profile_page_table">
+            <tbody>
+              <tr>
+                <th colSpan={2} className="addCase_Colheading">
+                  <h2>View Cases of Individuals</h2>
+                </th>
+              </tr>
+
+              <tr>
+                <td colSpan={2} className=" profile_page_table_col">
+                  <StyledTextFieldLong
+                    label="Citizen Id"
+                    variant="standard"
+                    style={{ color: "black" }}
+                    id="c_id"
+                  />
+                </td>
+              </tr>
+              <tr>
+                <td colSpan={2} className=" profile_page_table_col">
+                  <StyledTextFieldLong
+                    label="Access Key"
+                    variant="standard"
+                    style={{ color: "black" }}
+                    id="a_key"
+                  />
+                </td>
+              </tr>
+
+              <tr>
+                <td className="profile_page_table_col">
+                  <button className=" addCase_Buttion">Submit</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>

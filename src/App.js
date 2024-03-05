@@ -14,6 +14,9 @@ import Settings from "./Pages/Settings";
 import courtHome from "./Pages/court/home";
 import courtAddJudgement from "./Pages/court/addJudgement";
 import courtViewJudgement from "./Pages/court/viewJudgement";
+import Profile_citizen from "./Pages/citizen/home";
+import Status_citizen from "./Pages/citizen/status";
+import Status_all from "./Pages/citizen/allstatus";
 
 function App() {
   return (
@@ -30,6 +33,9 @@ function App() {
         <Route path="/court/home" Component={courtHome} />
         <Route path="/court/addjudgement" Component={courtAddJudgement} />
         <Route path="/court/viewjudgement" Component={courtViewJudgement} />
+        <Route path="/citizen/home" Component={Profile_citizen} />
+        <Route path="/citizen/status" Component={Status_citizen} />
+        <Route path="/citizen/statusall" Component={Status_all} />
       </Routes>
     </div>
   );

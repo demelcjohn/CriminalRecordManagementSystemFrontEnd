@@ -1,11 +1,11 @@
-import NavBar from "../Components/NavBar/NavBar";
-import "./profile_page.css";
-import dp from "../img/dp.png";
+import NavBar from "../../Components/NavBar/NavBar";
+import "../profile_page.css";
+import dp from "../../img/dp.png";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
 import React, { useState } from "react";
 
-export default function Profile_page() {
+export default function Profile_citizen() {
   const [user, setuser] = useState({
     name: "jesvin",
     house_name: "house name",
@@ -96,9 +96,9 @@ export default function Profile_page() {
             <tr>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
-                  label="Authority"
+                  label="Gender"
                   variant="standard"
-                  value={"QWERty Police Station"}
+                  value={user.gender}
                   focused
                   style={{ color: "black" }}
                   disabled
@@ -106,14 +106,83 @@ export default function Profile_page() {
               </td>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
-                  label="Designation"
+                  label="DOB"
                   variant="standard"
-                  value={"Sub Inspector"}
+                  value={user.dob}
                   focused
                   style={{ color: "black" }}
                   disabled
                 />
               </td>
+            </tr>
+            <tr>
+              <td colSpan={2} className="profile_page_table_col">
+                <StyledTextFieldLong
+                  label="House Name"
+                  variant="standard"
+                  value={user.house_name}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="Street"
+                  variant="standard"
+                  value={user.street}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="City"
+                  variant="standard"
+                  value={user.city}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="State"
+                  variant="standard"
+                  value={user.state}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="PIN"
+                  variant="standard"
+                  value={user.pin}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="Country"
+                  variant="standard"
+                  value={user.gender}
+                  focused
+                  style={{ color: "black" }}
+                  disabled
+                />
+              </td>
+              <td></td>
             </tr>
           </table>
         </div>

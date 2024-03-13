@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../Components/NavBar/NavBar";
+import NavBar from "../../Components/NavBar_Police/NavBar";
 import "../addCase.css";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import "../profile_page.css";
+import NavBar_Court from "../../Components/NavBar_Court/NavBar";
 
 export default function AddJudgement() {
   const StyledTextFieldLong = styled(TextField)({
@@ -49,7 +50,7 @@ export default function AddJudgement() {
 
   return (
     <div className=" addCase_div">
-      <NavBar></NavBar>
+      <NavBar_Court />
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <table className="profile_page_table">

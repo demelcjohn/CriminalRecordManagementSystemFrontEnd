@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
 import "./addCase.css";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
@@ -7,6 +7,7 @@ import "./profile_page.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
 export default function ViewCase() {
   const StyledTextFieldLong = styled(TextField)({
@@ -86,7 +87,7 @@ export default function ViewCase() {
   });
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar_Police />
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <div>

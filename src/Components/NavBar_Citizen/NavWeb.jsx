@@ -1,40 +1,29 @@
 import React from "react";
-import "../NavBar/NavWeb.css";
+import "./NavWeb.css";
 import { useNavigate } from "react-router-dom";
 export default function NavWeb() {
   const navigate = useNavigate();
 
   const profile = () => {
-    navigate("/profile");
+    navigate("/citizen/home");
   };
   const allcase = () => {
-    navigate("/allcase");
+    navigate("/citizen/status");
   };
   const addcase = () => {
-    navigate("/addcase");
+    navigate("/citizen/statusall");
   };
-  const search = () => {
-    navigate("/searchcase");
-  };
-  const settings = () => {
-    navigate("/settings");
-  };
+
   return (
     <div className="NavWeb_outerdiv">
       <div className="navweb_item" onClick={profile}>
-        Profile
+        Home
       </div>
       <div className="navweb_item" onClick={allcase}>
-        All Cases
+        Status
       </div>
       <div className="navweb_item" onClick={addcase}>
-        Add Cases
-      </div>
-      <div className="navweb_item" onClick={search}>
-        Search Case
-      </div>
-      <div className="navweb_item" onClick={settings}>
-        Settings
+        Status All
       </div>
     </div>
   );

@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../Components/NavBar/NavBar";
+import NavBar from "../../Components/NavBar_Police/NavBar";
 import "../addCase.css";
 import { TextField, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import "../profile_page.css";
 import "./status.css";
 import CaseStatusBox from "../../Components/caseStatusBox";
+import NavBar_Citizen from "../../Components/NavBar_Citizen/NavBar";
 
 export default function Status_citizen() {
   const caseIds = [
@@ -59,7 +60,7 @@ export default function Status_citizen() {
 
   return (
     <div className=" addCase_div">
-      <NavBar></NavBar>
+      <NavBar_Citizen />
       <div className="addCase_Outerdiv">
         <div className="container-box">
           <Box

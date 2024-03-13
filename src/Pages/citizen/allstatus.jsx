@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../../Components/NavBar/NavBar";
+import NavBar from "../../Components/NavBar_Police/NavBar";
 import "../addCase.css";
 import { TextField, Box } from "@mui/material";
 import { styled } from "@mui/system";
 import "../profile_page.css";
+import NavBar_Citizen from "../../Components/NavBar_Citizen/NavBar";
 
 export default function Status_all() {
   const StyledTextFieldLong = styled(TextField)({
@@ -49,7 +50,7 @@ export default function Status_all() {
 
   return (
     <div className=" addCase_div">
-      <NavBar></NavBar>
+      <NavBar_Citizen/>
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <table className="profile_page_table">

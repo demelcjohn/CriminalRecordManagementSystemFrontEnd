@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Home from "./Pages/home";  
+import Home from "./Pages/home";
 import Login from "./Pages/login";
 // import Login from './Pages/login';
 import Profile_page from "./Pages/profile_page";
@@ -22,14 +22,14 @@ function App() {
   return (
     <div className="App">
       <Routes>
-        <Route path="/login" Component={Login} />
-        <Route path="/home" Component={Home} />
-        <Route path="/profile" Component={Profile_page} />
-        <Route path="/viewcase/:id" Component={ViewCase} />
-        <Route path="/addcase" Component={AddCase} />
-        <Route path="/allcase" Component={ViewAllCases} />
-        <Route path="/searchcase" Component={Search_CNR} />
-        <Route path="/settings" Component={Settings} />
+        <Route path="/police/login" Component={Login} />
+        <Route path="/police/home" Component={Home} />
+        <Route path="/police/profile" Component={Profile_page} />
+        <Route path="/police/viewcase/:id" Component={ViewCase} />
+        <Route path="/police/addcase" Component={AddCase} />
+        <Route path="/police/allcase" Component={ViewAllCases} />
+        <Route path="/police/searchcase" Component={Search_CNR} />
+        <Route path="/police/settings" Component={Settings} />
         <Route path="/court/home" Component={courtHome} />
         <Route path="/court/addjudgement" Component={courtAddJudgement} />
         <Route path="/court/viewjudgement" Component={courtViewJudgement} />

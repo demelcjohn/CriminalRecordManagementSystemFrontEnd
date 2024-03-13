@@ -1,9 +1,10 @@
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
 import "./profile_page.css";
 import dp from "../img/dp.png";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
 import React, { useState } from "react";
+import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
 export default function Profile_page() {
   const [user, setuser] = useState({
@@ -60,7 +61,7 @@ export default function Profile_page() {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar_Police></NavBar_Police>
       <div className="profile_page_outerdiv">
         <div className="profile_page_innerdiv">
           <table>

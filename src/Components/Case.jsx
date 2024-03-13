@@ -1,6 +1,6 @@
 import React from "react";
 
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "./NavBar_Police/NavBar";
 import "../Pages/addCase.css";
 
 import { TextField } from "@mui/material";

@@ -1,9 +1,10 @@
-import NavBar from "../../Components/NavBar/NavBar";
+import NavBar from "../../Components/NavBar_Police/NavBar";
 import "../profile_page.css";
 import dp from "../../img/dp.png";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
 import React, { useState } from "react";
+import NavBar_Citizen from "../../Components/NavBar_Citizen/NavBar";
 
 export default function Profile_citizen() {
   const [user, setuser] = useState({
@@ -60,7 +61,7 @@ export default function Profile_citizen() {
 
   return (
     <div>
-      <NavBar></NavBar>
+      <NavBar_Citizen/>
       <div className="profile_page_outerdiv">
         <div className="profile_page_innerdiv">
           <table>

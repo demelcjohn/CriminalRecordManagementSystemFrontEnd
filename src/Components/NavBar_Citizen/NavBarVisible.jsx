@@ -1,5 +1,5 @@
 import React from "react";
-import "../NavBar/NavBarVisible.css";
+import "./NavBarVisible.css";
 import CloseIcon from "@mui/icons-material/Close";
 import { Link } from "react-router-dom";
 

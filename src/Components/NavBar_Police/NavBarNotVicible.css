@@ -1,0 +1,25 @@
+.NavBarNotVisible_outerdiv {
+    background: #2D2D2D;
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    padding-left: 15px;
+}
+
+.navbarButton {
+    margin-left: 10px;
+
+}
+
+.navbarIcon {
+    height: 100px;
+    width: 100px;
+}
+
+.navbarButton:hover {
+    scale: 1.2;
+}
+
+.navbarIcon :hover {
+    scale: 1.2;
+}

@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
 import "./addCase.css";
 import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import "./profile_page.css";
 import axios from "axios";
+import NavBar_Police from "../Components/NavBar_Police/NavBar";
 const ethers = require("ethers");
 
 export default function AddCase() {
@@ -326,7 +327,7 @@ export default function AddCase() {
     };
     console.log(responce);
 
-    const endpoint =  process.env.REACT_APP_API_URL + "/api/police/case";
+    const endpoint = process.env.REACT_APP_API_URL + "/api/police/case";
 
     axios
       .post(endpoint, responce)
@@ -354,7 +355,7 @@ export default function AddCase() {
 
   return (
     <div className=" addCase_div">
-      <NavBar></NavBar>
+      <NavBar_Police/>
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <div>

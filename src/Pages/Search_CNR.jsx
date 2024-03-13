@@ -4,7 +4,8 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import Case from "../Components/Case";
 import axios from "axios";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
+import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
 export default function Search_CNR() {
   const StyledTextFieldLong = styled(TextField)({
@@ -48,8 +49,8 @@ export default function Search_CNR() {
   };
 
   return (
-    <div >
-        <NavBar/>
+    <div>
+      <NavBar_Police/>
       <div className="Seach_Outer_Div">
         <StyledTextFieldLong
           label="Search By CNR Number"

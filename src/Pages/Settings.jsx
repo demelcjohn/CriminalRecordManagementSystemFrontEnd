@@ -4,7 +4,7 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import Case from "../Components/Case";
 import axios from "axios";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
 
 export default function Settings() {
   const StyledTextFieldLong = styled(TextField)({

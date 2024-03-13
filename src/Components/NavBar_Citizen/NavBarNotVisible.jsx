@@ -1,6 +1,6 @@
 import React from "react";
 import AppsIcon from "@mui/icons-material/Apps";
-import "../NavBar/NavBarNotVicible.css";
+import "./NavBarNotVicible.css";
 
 export default function NavBarNotVisible(props) {
   const openNavBar = () => {

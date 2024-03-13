@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Case from "../Components/Case";
 import axios from "axios";
-import NavBar from "../Components/NavBar/NavBar";
+import NavBar from "../Components/NavBar_Police/NavBar";
+import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
 export default function ViewAllCases() {
   const [cases, setcases] = useState([]);
@@ -24,8 +25,8 @@ export default function ViewAllCases() {
 
   return (
     <div>
-      <NavBar />
-      <div style={{ overflow: "scroll",height:"100vh",width:"100vw" }}>
+      <NavBar_Police />
+      <div style={{ overflow: "scroll", height: "100vh", width: "100vw" }}>
         {cases?.map((item, index) => {
           console.log("test");
           return <Case key={index} data={item} />;

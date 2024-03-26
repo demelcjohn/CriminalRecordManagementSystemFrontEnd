@@ -50,7 +50,7 @@ export default function Search_CNR() {
 
   return (
     <div>
-      <NavBar_Police/>
+      <NavBar_Police />
       <div className="Seach_Outer_Div">
         <StyledTextFieldLong
           label="Search By CNR Number"

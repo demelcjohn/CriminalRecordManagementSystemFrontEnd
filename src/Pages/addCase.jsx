@@ -355,7 +355,7 @@ export default function AddCase() {
 
   return (
     <div className=" addCase_div">
-      <NavBar_Police/>
+      <NavBar_Police />
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <div>

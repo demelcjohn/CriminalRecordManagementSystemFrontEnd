@@ -1,0 +1,17 @@
+.public_profile_outerdiv {
+    color: black;
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.public_profile_outerdiv_loading {
+    color: black;
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}

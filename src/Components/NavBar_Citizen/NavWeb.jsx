@@ -14,6 +14,14 @@ export default function NavWeb() {
     navigate("/citizen/statusall");
   };
 
+  const requestby = () => {
+    navigate("/citizen/requestby");
+  };
+
+  const requestto = () => {
+    navigate("/citizen/requestto");
+  };
+
   return (
     <div className="NavWeb_outerdiv">
       <div className="navweb_item" onClick={profile}>
@@ -24,6 +32,12 @@ export default function NavWeb() {
       </div>
       <div className="navweb_item" onClick={addcase}>
         Status All
+      </div>
+      <div className="navweb_item" onClick={requestby}>
+        Request By
+      </div>
+      <div className="navweb_item" onClick={requestto}>
+        Request To
       </div>
     </div>
   );

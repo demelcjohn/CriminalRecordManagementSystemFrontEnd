@@ -21,6 +21,12 @@ import AddNewCitizen from "./Pages/superuser/add_citizen";
 import AddNewPolice from "./Pages/superuser/addpolice";
 import AddNewCourt from "./Pages/superuser/addcourt";
 import Allcitizen from "./Pages/superuser/AllCitizens";
+import CitizenLogin from "./Pages/citizen/login";
+import Request_By from "./Pages/citizen/request_by";
+import Request_to from "./Pages/citizen/request_to";
+import Public_profile from "./Pages/citizen/public_profile";
+import Addrequest from "./Pages/citizen/addrequest";
+import My_Public_profile from "./Pages/citizen/myPublicProfile";
 
 function App() {
   return (
@@ -37,13 +43,19 @@ function App() {
         <Route path="/court/home" Component={courtHome} />
         <Route path="/court/addjudgement" Component={courtAddJudgement} />
         <Route path="/court/viewjudgement" Component={courtViewJudgement} />
+        <Route path="/citizen/login" Component={CitizenLogin} />?
         <Route path="/citizen/home" Component={Profile_citizen} />
+        <Route path="/citizen/requestby" Component={Request_By} />
+        <Route path="/citizen/requestto" Component={Request_to} />
+        <Route path="/citizen/publicprofile/:id" Component={Public_profile} />
+        <Route path="/citizen/addrequest" Component={Addrequest}/>
+        <Route path="/citizen/mypublicprofile" Component={My_Public_profile}/>
         <Route path="/citizen/status" Component={Status_citizen} />
         <Route path="/citizen/statusall" Component={Status_all} />
-        <Route path="/admin/addcitizen" Component={AddNewCitizen}/>
-        <Route path ="/admin/addpolice" Component={AddNewPolice}/>
-        <Route path = "/admin/addcourt" Component={AddNewCourt}/>
-        <Route path="/admin/allcitizen" Component={Allcitizen}/>
+        <Route path="/admin/addcitizen" Component={AddNewCitizen} />
+        <Route path="/admin/addpolice" Component={AddNewPolice} />
+        <Route path="/admin/addcourt" Component={AddNewCourt} />
+        <Route path="/admin/allcitizen" Component={Allcitizen} />
       </Routes>
     </div>
   );

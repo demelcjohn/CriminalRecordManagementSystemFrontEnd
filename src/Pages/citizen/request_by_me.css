@@ -1,0 +1,5 @@
+.request_to_outerdiv {
+    margin-left: 200px;
+    height: 100vh;
+    overflow: scroll;
+}

@@ -83,16 +83,7 @@ export default function AddNewCitizen() {
                 />
               </td>
             </tr>
-            <tr>
-              <td colSpan={2} className="profile_page_table_col">
-                <StyledTextFieldLong
-                  label="Address"
-                  variant="standard"
-                  style={{ color: "black" }}
-                  id="address"
-                />
-              </td>
-            </tr>
+            
             <tr>
               <td colSpan={2} className="profile_page_table_col">
                 <StyledTextFieldLong

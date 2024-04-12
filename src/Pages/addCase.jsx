@@ -7,6 +7,8 @@ import "./profile_page.css";
 import axios from "axios";
 import NavBar_Police from "../Components/NavBar_Police/NavBar";
 const ethers = require("ethers");
+//const crypto = require("crypto");
+const CryptoJS = require("crypto-js");
 
 export default function AddCase() {
   const [walletAddress, setWalletAddres] = useState("");
@@ -309,6 +311,28 @@ export default function AddCase() {
     // }
   }
 
+  function sha256(message) {
+    const hash = CryptoJS.SHA256(message);
+    return hash.toString(CryptoJS.enc.Hex);
+  }
+
+  const dataHashing = (valuesArray) => {
+    if (valuesArray.length === 1) return valuesArray[0];
+    var i = 0;
+    var j = 0;
+    const valuesArray1 = [];
+    while (i < valuesArray.length) {
+      const h1 = sha256(valuesArray[i]);
+      const h2 = i + 1 === valuesArray.length ? h1 : sha256(valuesArray[i + 1]);
+      const h = h1 + h2;
+      valuesArray1[j] = sha256(h);
+      i += 2;
+      j++;
+    }
+    console.log(valuesArray1);
+    return dataHashing(valuesArray1);
+  };
+
   const submithandler = () => {
     const responce = {
       case_type: document.getElementById("case_type").value,
@@ -326,6 +350,18 @@ export default function AddCase() {
       respondent: document.getElementById("respondent").value,
     };
     console.log(responce);
+
+    ///////////////////////////////
+    //Hashing
+    // Convert values to strings and store them in an array
+    const valuesArray = Object.values(responce).map((value) => String(value));
+
+    console.log("Values present in array ::: ", valuesArray);
+
+    const hashVal = dataHashing(valuesArray);
+
+    console.log("Hashed value ::: ", hashVal);
+    /////////////////////////////////
 
     const endpoint = process.env.REACT_APP_API_URL + "/api/police/case";
 

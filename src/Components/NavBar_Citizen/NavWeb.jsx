@@ -7,6 +7,11 @@ export default function NavWeb() {
   const profile = () => {
     navigate("/citizen/home");
   };
+
+  const publicprofile = ()=>{
+    navigate("/citizen/mypublicprofile");
+  }
+
   const allcase = () => {
     navigate("/citizen/status");
   };
@@ -22,10 +27,17 @@ export default function NavWeb() {
     navigate("/citizen/requestto");
   };
 
+  const addrequest = ()=>{
+    navigate("/citizen/addrequest");
+  }
+
   return (
     <div className="NavWeb_outerdiv">
       <div className="navweb_item" onClick={profile}>
         Home
+      </div>
+      <div className="navweb_item" onClick={publicprofile}>
+        My Public Profile
       </div>
       <div className="navweb_item" onClick={allcase}>
         Status
@@ -38,6 +50,9 @@ export default function NavWeb() {
       </div>
       <div className="navweb_item" onClick={requestto}>
         Request To
+      </div>
+      <div className="navweb_item" onClick={addrequest}>
+        Add Request
       </div>
     </div>
   );

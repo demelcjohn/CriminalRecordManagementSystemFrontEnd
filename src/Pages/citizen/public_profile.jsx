@@ -3,12 +3,13 @@ import "./public_profile.css";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { CircularProgress } from "@mui/material";
+import Case_card from "../../Components/public_profile/case_card";
 
 export default function Public_profile() {
   const params = useParams();
 
   const id = params.id;
-  const [public_profile, setpublic_profile] = useState();
+  const [public_profile, setpublic_profile] = useState([]);
   const [isloading, setisloading] = useState(false);
 
   const data_fetch = async () => {
@@ -24,6 +25,7 @@ export default function Public_profile() {
       .get(url, config)
       .then((response) => {
         console.log(response.data);
+        setpublic_profile(response.data)
         setisloading(false);
       })
       .catch((error) => {
@@ -46,7 +48,13 @@ export default function Public_profile() {
 
   return (
     <div className="public_profile_outerdiv">
-      <p>Public_profile of {public_profile}</p>
+      <h1>Public Profile</h1>
+      <div>
+        {public_profile.map((item) => {
+          return(<Case_card data = {item}/>)
+        //    return <h1>hello</h1>;
+        })}
+      </div>
     </div>
   );
 }

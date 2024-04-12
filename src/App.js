@@ -25,6 +25,8 @@ import CitizenLogin from "./Pages/citizen/login";
 import Request_By from "./Pages/citizen/request_by";
 import Request_to from "./Pages/citizen/request_to";
 import Public_profile from "./Pages/citizen/public_profile";
+import Addrequest from "./Pages/citizen/addrequest";
+import My_Public_profile from "./Pages/citizen/myPublicProfile";
 
 function App() {
   return (
@@ -46,6 +48,8 @@ function App() {
         <Route path="/citizen/requestby" Component={Request_By} />
         <Route path="/citizen/requestto" Component={Request_to} />
         <Route path="/citizen/publicprofile/:id" Component={Public_profile} />
+        <Route path="/citizen/addrequest" Component={Addrequest}/>
+        <Route path="/citizen/mypublicprofile" Component={My_Public_profile}/>
         <Route path="/citizen/status" Component={Status_citizen} />
         <Route path="/citizen/statusall" Component={Status_all} />
         <Route path="/admin/addcitizen" Component={AddNewCitizen} />

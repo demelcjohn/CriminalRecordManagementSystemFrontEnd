@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from "react";
+import "./public_profile.css";
+import { useParams } from "react-router-dom";
 import axios from "axios";
-import CircularProgress from "@mui/material/CircularProgress";
-import Request_by_card from "../../Components/request_components/request_by_card";
+import { CircularProgress } from "@mui/material";
+import Case_card from "../../Components/public_profile/case_card";
 import NavBar_Citizen from "../../Components/NavBar_Citizen/NavBar";
-import './request_by_me.css';
 
-export default function Request_By() {
-  const [requests, setrequests] = useState([]);
+export default function My_Public_profile() {
+
+  const [public_profile, setpublic_profile] = useState([]);
   const [isloading, setisloading] = useState(false);
+
   const data_fetch = async () => {
     setisloading(true);
-    const url = "http://127.0.0.1:8000/citizen/request/by";
+    const url = "http://127.0.0.1:8000/citizen/mycases";
     const token = localStorage.getItem("token"); // replace 'token' with the key you used to store the token
     const config = {
       headers: { token: token },
@@ -20,8 +23,8 @@ export default function Request_By() {
     const data = await axios
       .get(url, config)
       .then((response) => {
-        setrequests(response.data);
         console.log(response.data);
+        setpublic_profile(response.data);
         setisloading(false);
       })
       .catch((error) => {
@@ -32,19 +35,11 @@ export default function Request_By() {
 
   useEffect(() => {
     data_fetch();
-    console.log(requests);
   }, []);
 
   if (isloading) {
     return (
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+      <div className="public_profile_outerdiv_loading">
         <CircularProgress />
       </div>
     );
@@ -52,12 +47,16 @@ export default function Request_By() {
 
   return (
     <div>
-      <NavBar_Citizen/>
-      <div className="request_to_outerdiv">
-      {requests.map((item) => {
-        return <Request_by_card data={item}></Request_by_card>;
-      })}
+        <NavBar_Citizen/>
+    <div className="my_public_profile_outerdiv">
+      <h1>Public Profile</h1>
+      <div>
+        {public_profile.map((item) => {
+          return <Case_card data={item} />;
+          //    return <h1>hello</h1>;
+        })}
       </div>
+    </div>
     </div>
   );
 }

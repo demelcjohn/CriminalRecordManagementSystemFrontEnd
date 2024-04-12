@@ -3,6 +3,8 @@
     padding: 20px;
     padding-left: 100px;
     padding-right: 100px;
+    overflow: scroll;
+    height: 100vh;
 }
 
 .public_profile_outerdiv_loading {
@@ -14,4 +16,14 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.my_public_profile_outerdiv {
+    color: black;
+    padding: 20px;
+    padding-left: 100px;
+    padding-right: 100px;
+    overflow: scroll;
+    height: 100vh;
+    margin-left: 200px;
 }

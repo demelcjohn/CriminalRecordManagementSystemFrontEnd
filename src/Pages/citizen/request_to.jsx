@@ -5,7 +5,7 @@ import Requests_to_card from '../../Components/request_components/requests_to_ca
 import { useState,useEffect } from 'react';
 import NavBar_Citizen from '../../Components/NavBar_Citizen/NavBar';
 import { Margin } from '@mui/icons-material';
-
+import "./request_by_me.css";
 
 export default function Request_to() {
 
@@ -54,9 +54,9 @@ export default function Request_to() {
     }
 
     return (
-        <div>
+        <div >
       <NavBar_Citizen/>
-      <div style={{marginLeft : 200}}>
+      <div style={{marginLeft : 200}} className='request_to_outerdiv'>
         {requests.map((item) => {
           return <Requests_to_card data={item} />;
         })}

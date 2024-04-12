@@ -1,0 +1,35 @@
+.case_card_div {
+    padding: 30px;
+    border: solid;
+    border-radius: 3px;
+    border-color: black;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin: 30px;
+
+}
+
+.judgement_card_div {
+    padding: 30px;
+    border: solid;
+    border-radius: 2px;
+    border-color: black;
+    margin: 20px;
+
+
+}
+
+.citizen_card_inner_div {
+    padding: 30px;
+    border: solid;
+    border-radius: 2px;
+    border-color: black;
+    color: black;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 30px;
+}

@@ -18,6 +18,23 @@ export default function AddNewCitizen() {
     uid: "1111 1111 1111 1111",
   });
 
+  const submit_handler = async ()=>{
+    const payload = {
+      "UID":document.getElementById('UID').value,
+      "name":document.getElementById('name').vale,
+      "password":document.getElementById('password').value,
+      "dob":document.getElementById('dob').value,
+      "gender":document.getElementById('gender').value,
+      "housename":document.getElementById('housename').value,
+      "street":document.getElementById('street').value,
+      "city":document.getElementById('city').value,
+      "pin":document.getElementById('pin').value,
+      "state":document.getElementById('state').value,
+      "country":"India",
+      "phno":document.getElementById
+    }
+  }
+
   const StyledTextFieldLong = styled(TextField)({
     color: "black",
     width: "90vw",
@@ -95,6 +112,79 @@ export default function AddNewCitizen() {
               </td>
             </tr>
             <tr>
+              
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="DOB"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="dob"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="gender"
+                  variant="standard"
+                  id="gender"
+                  style={{ color: "black" }}  
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colSpan={2} className="profile_page_table_col">
+                <StyledTextFieldLong
+                  label="housename"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="housename"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="street"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="street"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="city"
+                  variant="standard"
+                  id="city"
+                  style={{ color: "black" }}  
+                />
+              </td>
+            </tr>
+            <tr>
+              
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="pin"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="pin"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="state"
+                  variant="standard"
+                  id="state"
+                  style={{ color: "black" }}  
+                />
+              </td>
+            </tr>
+            
+
+
+            <tr>
+
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
                   label="ph No"

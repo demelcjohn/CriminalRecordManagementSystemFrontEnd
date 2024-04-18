@@ -1,22 +1,67 @@
 import "./profile_page.css";
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
 import React, { useState } from "react";
 import NavBar_SuperUser from "../../Components/NavBar_SuperUser/NavBar";
+import axios from "axios";
 
 export default function AddNewCourt() {
-  const [user, setuser] = useState({
-    name: "jesvin",
-    house_name: "house name",
-    street: "street1",
-    city: "city 1",
-    state: "state 1",
-    country: "country 1",
-    pin: "111 111",
-    dob: "21-11-2001",
-    gender: "Male",
-    uid: "1111 1111 1111 1111",
-  });
+  const [isloading, setisloading] = useState(false);
+
+  const submit_handler = async () => {
+    setisloading(true);
+    const url = "http://127.0.0.1:8000/admin/court";
+    const token = localStorage.getItem("token"); // replace 'token' with the key you used to store the token
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
+    };
+
+    const UID = document.getElementById("uid").value;
+    const name = document.getElementById("name").value;
+    const password = document.getElementById("password").value;
+    const housename = document.getElementById("housename").value;
+    const street = document.getElementById("street").value;
+    const city = document.getElementById("city").value;
+    const pin = document.getElementById("pin").value;
+    const state = document.getElementById("state").value;
+    const country = "India";
+    const phno = document.getElementById("phno").value;
+    const email = document.getElementById("email").value;
+    const court_name = document.getElementById("court_name").value;
+
+    const payload = {
+      UID: UID,
+      name: name,
+      password: password,
+      housename: housename,
+      street: street,
+      city: city,
+      pin: pin,
+      state: state,
+      country: country,
+      phno: phno,
+      email: email,
+      court_name: court_name,
+    };
+
+    console.log(payload);
+    const data1 = await axios
+      .post(url, payload, config)
+      .then((response) => {
+        if (response.status === 200) {
+          alert("New Court User Added");
+        } else {
+          alert("error occured");
+        }
+        setisloading(false);
+      })
+      .catch((error) => {
+        console.log(error.response.data.error_msg);
+        alert("error occured :" + error.response.data.error_msg);
+        setisloading(false);
+      });
+  };
 
   const StyledTextFieldLong = styled(TextField)({
     color: "black",
@@ -86,16 +131,6 @@ export default function AddNewCourt() {
             <tr>
               <td colSpan={2} className="profile_page_table_col">
                 <StyledTextFieldLong
-                  label="Address"
-                  variant="standard"
-                  style={{ color: "black" }}
-                  id="address"
-                />
-              </td>
-            </tr>
-            <tr>
-              <td colSpan={2} className="profile_page_table_col">
-                <StyledTextFieldLong
                   label="Password"
                   variant="standard"
                   style={{ color: "black" }}
@@ -103,6 +138,73 @@ export default function AddNewCourt() {
                 />
               </td>
             </tr>
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="DOB"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="dob"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="gender"
+                  variant="standard"
+                  id="gender"
+                  style={{ color: "black" }}
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td colSpan={2} className="profile_page_table_col">
+                <StyledTextFieldLong
+                  label="housename"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="housename"
+                />
+              </td>
+            </tr>
+
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="street"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="street"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="city"
+                  variant="standard"
+                  id="city"
+                  style={{ color: "black" }}
+                />
+              </td>
+            </tr>
+            <tr>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="pin"
+                  variant="standard"
+                  style={{ color: "black" }}
+                  id="pin"
+                />
+              </td>
+              <td className="profile_page_table_col">
+                <StyledTextFieldShort
+                  label="state"
+                  variant="standard"
+                  id="state"
+                  style={{ color: "black" }}
+                />
+              </td>
+            </tr>
+
             <tr>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
@@ -127,14 +229,14 @@ export default function AddNewCourt() {
                   label="Court Name"
                   variant="standard"
                   style={{ color: "black" }}
-                  id="courtname"
+                  id="court_name"
                 />
               </td>
             </tr>
             <tr>
               <td></td>
               <td>
-                <button>Submit</button>
+                <Button onClick={submit_handler}>Submit</Button>
               </td>
             </tr>
           </table>

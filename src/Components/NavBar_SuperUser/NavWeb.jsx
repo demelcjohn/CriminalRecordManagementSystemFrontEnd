@@ -14,31 +14,35 @@ export default function NavWeb() {
     navigate("/admin/addpolice");
   };
 
-  const allpolice = () => {};
+  const allpolice = () => {
+    navigate("/admin/allPolice");
+  };
 
   const addcourt = () => {
     navigate("/admin/addcourt");
   };
 
-  const allcourt = () => {};
+  const allcourt = () => {
+    navigate("/admin/allCourt");
+  };
 
   return (
     <div className="NavWeb_outerdiv">
       <div className="navweb_item" onClick={addcitizen}>
-        Add New Citizen
+        Add Citizen
       </div>
       <div className="navweb_item" onClick={allcitizen}>
         All Citizens
       </div>
       <div className="navweb_item" onClick={addpolice}>
-        Add New Court User
+        Add Police User
       </div>
 
       <div className="navweb_item" onClick={allpolice}>
-        All Court User
+        All Police User
       </div>
       <div className="navweb_item" onClick={addcourt}>
-        Add New Police User
+        Add Court User
       </div>
       <div className="navweb_item" onClick={allcourt}>
         All Court User

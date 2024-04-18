@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import NavBar_SuperUser from "../../Components/NavBar_SuperUser/NavBar";
 import UserCard from "../../Components/admin/UserCard";
@@ -11,7 +12,7 @@ export default function Allcitizen() {
 
   const datafech = async () => {
     setisloading(true);
-    const url = "http://127.0.0.1:8000/admin/citizen";
+    const url = "http://127.0.0.1:8000/admin/police";
     const token = localStorage.getItem("token"); // replace 'token' with the key you used to store the token
     const config = {
       headers: { token: token },

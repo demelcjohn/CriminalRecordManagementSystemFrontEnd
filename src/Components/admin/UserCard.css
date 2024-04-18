@@ -1,0 +1,13 @@
+.usercard_outer_div {
+    height: 200px;
+    width: 60vw;
+    color: black;
+    border: solid;
+    border-width: 2px;
+    margin: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+}

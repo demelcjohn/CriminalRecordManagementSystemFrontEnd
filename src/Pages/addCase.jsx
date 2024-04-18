@@ -393,7 +393,7 @@ export default function AddCase() {
     <div className=" addCase_div">
       <NavBar_Police />
       <div className="addCase_Outerdiv">
-        <div className="profile_page_outerdiv">
+        <div className="addCase_inner_div">
           <div>
             <table className="profile_page_table">
               <tbody>

@@ -1,39 +1,69 @@
 import "./profile_page.css";
-import { TextField } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
 import React, { useState } from "react";
 import NavBar_SuperUser from "../../Components/NavBar_SuperUser/NavBar";
+import axios from "axios";
 
 export default function AddNewCitizen() {
-  const [user, setuser] = useState({
-    name: "jesvin",
-    house_name: "house name",
-    street: "street1",
-    city: "city 1",
-    state: "state 1",
-    country: "country 1",
-    pin: "111 111",
-    dob: "21-11-2001",
-    gender: "Male",
-    uid: "1111 1111 1111 1111",
-  });
+  const [isloading, setisloading] = useState(false);
 
-  const submit_handler = async ()=>{
+  const submit_handler = async () => {
+    setisloading(true);
+    const url = "http://127.0.0.1:8000/admin/citizen";
+    const token = localStorage.getItem("token"); // replace 'token' with the key you used to store the token
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
+    };
+
+    const UID = document.getElementById("uid").value;
+    const name = document.getElementById("name").value;
+    const password = document.getElementById("password").value;
+    const dob = document.getElementById("dob").value;
+    const gender = document.getElementById("gender").value;
+    const housename = document.getElementById("housename").value;
+    const street = document.getElementById("street").value;
+    const city = document.getElementById("city").value;
+    const pin = document.getElementById("pin").value;
+    const state = document.getElementById("state").value;
+    const country = "India";
+    const phno = document.getElementById("phno").value;
+    const email = document.getElementById("email").value;
+
     const payload = {
-      "UID":document.getElementById('UID').value,
-      "name":document.getElementById('name').vale,
-      "password":document.getElementById('password').value,
-      "dob":document.getElementById('dob').value,
-      "gender":document.getElementById('gender').value,
-      "housename":document.getElementById('housename').value,
-      "street":document.getElementById('street').value,
-      "city":document.getElementById('city').value,
-      "pin":document.getElementById('pin').value,
-      "state":document.getElementById('state').value,
-      "country":"India",
-      "phno":document.getElementById
-    }
-  }
+      UID: UID,
+      name: name,
+      password: password,
+      dob: dob,
+      gender: gender,
+      housename: housename,
+      street: street,
+      city: city,
+      pin: pin,
+      state: state,
+      country: country,
+      phno: phno,
+      email: email,
+    };
+
+    console.log(payload);
+    const data1 = await axios
+      .post(url, payload, config)
+      .then((response) => {
+        if (response.status === 200) {
+          alert("New Citizen Added");
+        } else {
+          alert("error occured");
+        }
+        setisloading(false);
+      })
+      .catch((error) => {
+        console.log(error.response.data.error_msg);
+        alert("error occured :" + error.response.data.error_msg);
+        setisloading(false);
+      });
+  };
 
   const StyledTextFieldLong = styled(TextField)({
     color: "black",
@@ -74,6 +104,14 @@ export default function AddNewCitizen() {
     },
   });
 
+  if (isloading) {
+    return (
+      <div className="all_citizens_outer_div_loading">
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <div>
       <NavBar_SuperUser />
@@ -96,11 +134,11 @@ export default function AddNewCitizen() {
                   label="UID"
                   variant="standard"
                   style={{ color: "black" }}
-                  id = "uid"  
+                  id="uid"
                 />
               </td>
             </tr>
-            
+
             <tr>
               <td colSpan={2} className="profile_page_table_col">
                 <StyledTextFieldLong
@@ -112,7 +150,6 @@ export default function AddNewCitizen() {
               </td>
             </tr>
             <tr>
-              
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
                   label="DOB"
@@ -126,7 +163,7 @@ export default function AddNewCitizen() {
                   label="gender"
                   variant="standard"
                   id="gender"
-                  style={{ color: "black" }}  
+                  style={{ color: "black" }}
                 />
               </td>
             </tr>
@@ -143,7 +180,6 @@ export default function AddNewCitizen() {
             </tr>
 
             <tr>
-              
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
                   label="street"
@@ -157,12 +193,11 @@ export default function AddNewCitizen() {
                   label="city"
                   variant="standard"
                   id="city"
-                  style={{ color: "black" }}  
+                  style={{ color: "black" }}
                 />
               </td>
             </tr>
             <tr>
-              
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
                   label="pin"
@@ -176,15 +211,12 @@ export default function AddNewCitizen() {
                   label="state"
                   variant="standard"
                   id="state"
-                  style={{ color: "black" }}  
+                  style={{ color: "black" }}
                 />
               </td>
             </tr>
-            
-
 
             <tr>
-
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
                   label="ph No"
@@ -198,13 +230,15 @@ export default function AddNewCitizen() {
                   label="email"
                   variant="standard"
                   id="email"
-                  style={{ color: "black" }}  
+                  style={{ color: "black" }}
                 />
               </td>
             </tr>
             <tr>
-                <td></td>
-                <td><button >Submit</button></td>
+              <td></td>
+              <td>
+                <button onClick={submit_handler}>Submit</button>
+              </td>
             </tr>
           </table>
         </div>

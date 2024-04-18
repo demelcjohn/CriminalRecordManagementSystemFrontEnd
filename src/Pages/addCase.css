@@ -9,6 +9,16 @@
     height: 100vh;
 }
 
+.addCase_inner_div{
+    color: #000 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: 10vh;
+    padding-left: 200px;
+}
+
 .addCase_table {
     overflow: scroll;
 }

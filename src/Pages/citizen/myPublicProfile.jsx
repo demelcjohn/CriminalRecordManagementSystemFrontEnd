@@ -7,9 +7,9 @@ import Case_card from "../../Components/public_profile/case_card";
 import NavBar_Citizen from "../../Components/NavBar_Citizen/NavBar";
 
 export default function My_Public_profile() {
-
   const [public_profile, setpublic_profile] = useState([]);
   const [isloading, setisloading] = useState(false);
+  const [user, setuser] = useState();
 
   const data_fetch = async () => {
     setisloading(true);
@@ -24,7 +24,8 @@ export default function My_Public_profile() {
       .get(url, config)
       .then((response) => {
         console.log(response.data);
-        setpublic_profile(response.data);
+        setpublic_profile(response.data.profile_data);
+        setuser(response.data.userdata);
         setisloading(false);
       })
       .catch((error) => {
@@ -47,16 +48,16 @@ export default function My_Public_profile() {
 
   return (
     <div>
-        <NavBar_Citizen/>
-    <div className="my_public_profile_outerdiv">
-      <h1>Public Profile</h1>
-      <div>
-        {public_profile.map((item) => {
-          return <Case_card data={item} />;
-          //    return <h1>hello</h1>;
-        })}
+      <NavBar_Citizen />
+      <div className="my_public_profile_outerdiv">
+        <h1>Public Profile</h1>
+        <div>
+          {public_profile.map((item) => {
+            return <Case_card data={item} />;
+            //    return <h1>hello</h1>;
+          })}
+        </div>
       </div>
-    </div>
     </div>
   );
 }

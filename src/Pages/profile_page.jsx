@@ -1,23 +1,28 @@
 import NavBar from "../Components/NavBar_Police/NavBar";
 import "./profile_page.css";
 import dp from "../img/dp.png";
-import { TextField } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 import { styled } from "@mui/system"; // Change this line
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import NavBar_Police from "../Components/NavBar_Police/NavBar";
+import axios from "axios";
 
 export default function Profile_page() {
+  const [isloading, setisloading] = useState(false);
   const [user, setuser] = useState({
-    name: "jesvin",
-    house_name: "house name",
-    street: "street1",
-    city: "city 1",
-    state: "state 1",
-    country: "country 1",
-    pin: "111 111",
-    dob: "21-11-2001",
-    gender: "Male",
-    uid: "1111 1111 1111 1111",
+    UID: "",
+    name: "",
+    password: "",
+    housename: "",
+    street: "",
+    city: "",
+    pin: "",
+    state: "",
+    country: "",
+    phNo: "",
+    email: "",
+    police_station: "",
+    rank: "",
   });
 
   const StyledTextFieldLong = styled(TextField)({
@@ -59,6 +64,41 @@ export default function Profile_page() {
     },
   });
 
+  const fechdata = async () => {
+    setisloading(true);
+    console.log("hello");
+    const url = "http://127.0.0.1:8000/police/login";
+    const token = localStorage.getItem("police_token");
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
+    };
+
+    const data = await axios
+      .get(url, config)
+      .then((res) => {
+        setuser(res.data);
+        console.log(user);
+        setisloading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setisloading(false);
+      });
+  };
+
+  useEffect(() => {
+    fechdata();
+  }, []);
+
+  if (isloading) {
+    return (
+      <div>
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <div>
       <NavBar_Police></NavBar_Police>
@@ -87,7 +127,7 @@ export default function Profile_page() {
                 <StyledTextFieldLong
                   label="UID"
                   variant="standard"
-                  value={user.uid}
+                  value={user.UID}
                   focused
                   style={{ color: "black" }}
                   disabled
@@ -97,9 +137,9 @@ export default function Profile_page() {
             <tr>
               <td className="profile_page_table_col">
                 <StyledTextFieldShort
-                  label="Authority"
+                  label="Police Station"
                   variant="standard"
-                  value={"QWERty Police Station"}
+                  value={user.police_station}
                   focused
                   style={{ color: "black" }}
                   disabled
@@ -109,7 +149,7 @@ export default function Profile_page() {
                 <StyledTextFieldShort
                   label="Designation"
                   variant="standard"
-                  value={"Sub Inspector"}
+                  value={user.rank}
                   focused
                   style={{ color: "black" }}
                   disabled

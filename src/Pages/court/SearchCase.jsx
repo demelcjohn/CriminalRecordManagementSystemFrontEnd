@@ -5,6 +5,8 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import "../profile_page.css";
 import NavBar_Court from "../../Components/NavBar_Court/NavBar";
+import axios from "axios";
+import Court_Case_Card from "../../Components/court/Court_Case_Card";
 
 export default function AddJudgement() {
   const StyledTextFieldLong = styled(TextField)({
@@ -26,25 +28,28 @@ export default function AddJudgement() {
     },
   });
 
-  const StyledTextFieldShort = styled(TextField)({
-    color: "black",
-    width: "42.5vw",
-    "@media (min-width:600px)": {
-      width: "20vw",
-    },
+  const [casefeached, setcasefeached] = useState();
 
-    "& .MuiInputBase-root.Mui-disabled": {
-      color: "black", // change input text color
-      "-webkit-text-fill-color": "black", // for webkit browsers
-    },
-    "& .MuiFormLabel-root.Mui-disabled": {
-      color: "black", // change label color
-    },
-    "& .MuiInputBase-input.Mui-disabled": {
-      color: "black", // change value color
-      "-webkit-text-fill-color": "black", // for webkit browsers
-    },
-  });
+  const fetchdata = async () => {
+    const cnr_number = document.getElementById("cnr_number").value;
+    const url = "http://127.0.0.1:8000/court/cases/" + cnr_number;
+    console.log(url);
+    const token = localStorage.getItem("court_token");
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
+    };
+
+    const data_1 = await axios
+      .get(url, config)
+      .then((response) => {
+        console.log(response.data);
+        setcasefeached(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
 
   //handleres
 
@@ -74,12 +79,15 @@ export default function AddJudgement() {
 
               <tr>
                 <td className="profile_page_table_col">
-                  <button className=" addCase_Buttion">Submit</button>
+                  <button className=" addCase_Buttion" onClick={fetchdata}>
+                    Submit
+                  </button>
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
+        {casefeached != null && <Court_Case_Card data={casefeached} />}
       </div>
     </div>
   );

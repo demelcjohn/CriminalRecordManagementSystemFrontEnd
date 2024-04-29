@@ -11,7 +11,7 @@ export default function NavWeb() {
     navigate("/court/addjudgement");
   };
   const viewjudgement_event = () => {
-    navigate("/court/viewjudgement");
+    navigate("/court/cases");
   };
 
   return (
@@ -23,7 +23,7 @@ export default function NavWeb() {
         Add Judgement
       </div>
       <div className="navweb_item" onClick={viewjudgement_event}>
-        View Judgement
+        All Cases
       </div>
     </div>
   );

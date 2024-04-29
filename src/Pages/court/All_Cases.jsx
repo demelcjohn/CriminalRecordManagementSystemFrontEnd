@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
-import Case from "../Components/Case";
-import axios from "axios";
-import NavBar from "../Components/NavBar_Police/NavBar";
-import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
-export default function ViewAllCases() {
+import axios from "axios";
+
+import Court_Case_Card from "../../Components/court/Court_Case_Card";
+import NavBar_Court from "../../Components/NavBar_Court/NavBar";
+
+export default function AllCases() {
   const [cases, setcases] = useState([]);
   const fechdata = async () => {
-    const url = "http://127.0.0.1:8000/police/cases";
-    const token = localStorage.getItem("police_token");
+    const url = "http://127.0.0.1:8000/court/cases";
+    const token = localStorage.getItem("court_token");
     const config = {
       headers: { token: token },
       withCredentials: true,
@@ -30,11 +31,18 @@ export default function ViewAllCases() {
 
   return (
     <div>
-      <NavBar_Police />
-      <div style={{ overflow: "scroll", height: "100vh", width: "100vw" }}>
+      <NavBar_Court />
+
+      <div style={{ overflow: "scroll", height: "100vh" }}>
         {cases.map((item, index) => {
           console.log("test");
-          return <Case key={index} data={item} />;
+          return (
+            <div
+              style={{ paddingLeft: "250px", margin: "30px", color: "black" }}
+            >
+              <Court_Case_Card data={item} />
+            </div>
+          );
         })}
       </div>
     </div>

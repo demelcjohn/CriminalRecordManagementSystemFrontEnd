@@ -4,7 +4,6 @@ import { TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import Case from "../Components/Case";
 import axios from "axios";
-import NavBar from "../Components/NavBar_Police/NavBar";
 import NavBar_Police from "../Components/NavBar_Police/NavBar";
 
 export default function Search_CNR() {
@@ -27,21 +26,22 @@ export default function Search_CNR() {
     },
   });
   const [casefeached, setcasefeached] = useState();
-  const [cnr_number, setcnr_number] = useState();
 
   const fetchdata = async () => {
-    const url = process.env.REACT_APP_API_URL + "/api/police/search";
-    const body = { cnr_number: document.getElementById("search").value };
-    console.log(body);
-    await axios
-      .post(url, body)
-      .then((responce) => {
-        setcasefeached(responce.data);
-        if (responce.status == 204) {
-          console.log("Not Found");
-          setcasefeached(null);
-          alert("Enter a valid CNR");
-        }
+    const cnr_number = document.getElementById("search").value;
+    const url = "http://127.0.0.1:8000/police/search/" + cnr_number;
+    console.log(url);
+    const token = localStorage.getItem("police_token");
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
+    };
+
+    const data_1 = await axios
+      .get(url, config)
+      .then((response) => {
+        console.log(response.data);
+        setcasefeached(response.data);
       })
       .catch((error) => {
         console.error(error);

@@ -23,7 +23,7 @@ export default function PoliceLogin() {
       password: password,
     };
     console.log(data);
-    const url =" http://localhost:8000/police/login";
+    const url = " http://localhost:8000/police/login";
 
     console.log(url);
     await axios
@@ -32,7 +32,7 @@ export default function PoliceLogin() {
         if (response.status === 200) {
           console.log(response.status);
           console.log(response.data);
-          localStorage.setItem("token", response.data.token);
+          localStorage.setItem("police_token", response.data.token);
           navigate("/police/home");
         } else if (response.status === 201) {
           alert("Please Check Username or Password");

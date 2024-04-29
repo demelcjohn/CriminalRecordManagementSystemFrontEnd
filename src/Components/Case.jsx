@@ -53,28 +53,11 @@ export default function Case(props) {
     },
   });
 
-  //   const first = {
-  //     _id: "656cd637f3ed95e622abeb31",
-  //     case_type: "Test",
-  //     filing_number: "123",
-  //     filing_date: "2023-12-11",
-  //     reg_number: "123",
-  //     reg_date: "2023-12-04",
-  //     cnr_number: "Test",
-  //     act: "123",
-  //     section: "123",
-  //     police_station: "123",
-  //     fir_number: "123",
-  //     year: "123",
-  //     petitioner: "Hello",
-  //     respondent: "Hello",
-  //   };
-
   const first = props.data;
   console.log(first);
 
   const view_more = () => {
-    navigate("/viewcase/" + first._id);
+    navigate("/police/viewcase/" + first._id);
   };
 
   return (

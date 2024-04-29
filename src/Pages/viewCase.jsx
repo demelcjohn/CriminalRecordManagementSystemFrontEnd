@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import NavBar from "../Components/NavBar_Police/NavBar";
 import "./addCase.css";
-import { TextField } from "@mui/material";
+import { CircularProgress, TextField } from "@mui/material";
 import { styled } from "@mui/system";
 import "./profile_page.css";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import NavBar_Police from "../Components/NavBar_Police/NavBar";
+import CitizenInvolvedCard from "../Components/Case/CitizenInvolvedCard";
 
 export default function ViewCase() {
   const StyledTextFieldLong = styled(TextField)({
@@ -49,48 +50,73 @@ export default function ViewCase() {
     },
   });
 
-  const [first, setfirst] = useState("");
+  const [first, setfirst] = useState({
+    case_type: "",
+    fillig_number: "",
+    filling_date: "",
+    registration_number: "",
+    registration_date: "",
+    cnr_number: "",
+    acts: "",
+    sections: "",
+    police_station: "",
+    fir_number: "",
+    year: "",
+    usersInvolved: [],
+    usersResponded: [],
+  });
   const { id } = useParams();
-  useEffect(() => {
-    // add the code for feching data here
+  const [isloading, setisloading] = useState(false);
 
-    const getdata = async () => {
-      const url = process.env.REACT_APP_API_URL + "/api/police/case/" + id;
-
-      await axios
-        .get(url)
-        .then((response) => {
-          setfirst(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        }, []);
+  const datafech = () => {
+    setisloading(true);
+    const url = "http://127.0.0.1:8000/police/cases/" + id;
+    const token = localStorage.getItem("police_token"); // replace 'token' with the key you used to store the token
+    const config = {
+      headers: { token: token },
+      withCredentials: true,
     };
 
-    // setfirst({
-    //   case_type: "Case ",
-    //   filing_number: "01",
-    //   filing_date: "2023-12-01",
-    //   reg_number: "01",
-    //   reg_date: "2023-11-15",
-    //   cnr_number: "TVE20-9999",
-    //   acts: "IPC",
-    //   sections: "12,34,55",
-    //   police_station: "Trivandrum",
-    //   fir_number: "01010134",
-    //   year: "2023",
-    //   petitioner: "stijo",
-    //   respondent: "navin",
-    // });
-    getdata();
-    console.log(id);
-  });
+    axios
+      .get(url, config)
+      .then((res) => {
+        setfirst(res.data);
+        console.log(res.data);
+        setisloading(false);
+      })
+      .catch((e) => {
+        console.log(e);
+        setisloading(false);
+      });
+  };
+
+  useEffect(() => {
+    datafech();
+  }, []);
+
+  if (isloading) {
+    return (
+      <div
+        style={{
+          width: "100vw",
+          height: "100vh",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-around",
+        }}
+      >
+        <CircularProgress />
+      </div>
+    );
+  }
+
   return (
     <div>
       <NavBar_Police />
       <div className="addCase_Outerdiv">
         <div className="profile_page_outerdiv">
           <div>
+            Hello
             <table className="profile_page_table">
               <tbody>
                 <tr>
@@ -103,7 +129,7 @@ export default function ViewCase() {
                     <StyledTextFieldLong
                       label="Case Type"
                       variant="standard"
-                      value={first.case_type}
+                      value={first ? first.case_type : ""}
                       focused
                       style={{ color: "black" }}
                       disabled
@@ -115,7 +141,7 @@ export default function ViewCase() {
                     <StyledTextFieldShort
                       label="Filing Number"
                       variant="standard"
-                      value={first.filing_number}
+                      value={first ? first.fillig_number : ""}
                       focused
                       style={{ color: "black" }}
                       disabled
@@ -125,7 +151,7 @@ export default function ViewCase() {
                     <StyledTextFieldShort
                       label="Filing Date"
                       variant="standard"
-                      value={first.filing_date}
+                      value={first.filling_date}
                       focused
                       style={{ color: "black" }}
                       disabled
@@ -137,7 +163,7 @@ export default function ViewCase() {
                     <StyledTextFieldShort
                       label="Registration Number"
                       variant="standard"
-                      value={first.reg_number}
+                      value={first.registration_number}
                       focused
                       style={{ color: "black" }}
                       disabled
@@ -147,7 +173,7 @@ export default function ViewCase() {
                     <StyledTextFieldShort
                       label="Registration Date"
                       variant="standard"
-                      value={first.reg_date}
+                      value={first.registration_date}
                       focused
                       style={{ color: "black" }}
                       disabled
@@ -241,32 +267,21 @@ export default function ViewCase() {
                   </td>
                 </tr>
                 <tr>
-                  <td className="profile_page_table_col" colSpan={2}>
-                    <StyledTextFieldLong
-                      label="Petitioner And Advocate"
-                      variant="standard"
-                      value={first.petitioner}
-                      focused
-                      style={{ color: "black" }}
-                      disabled
-                    />
-                  </td>
+                  <th colSpan={2}>
+                    <h2>Useres Involved</h2>
+                  </th>
                 </tr>
                 <tr>
                   <td className="profile_page_table_col" colSpan={2}>
-                    <StyledTextFieldLong
-                      label="Respondent and Advocate"
-                      variant="standard"
-                      value={first.respondent}
-                      focused
-                      style={{ color: "black" }}
-                      disabled
-                    />
+                    <div style={{ display: "flex", flexDirection: "row" }}>
+                      {first.usersInvolved.map((item) => {
+                        return <CitizenInvolvedCard data={item} />;
+                      })}
+                    </div>
                   </td>
                 </tr>
               </tbody>
             </table>
-
             <div className="addCase_space"></div>
           </div>
         </div>

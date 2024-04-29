@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Button, TextField } from "@mui/material";
-import "../Pages/login.css";
+import "./login.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function CourtLogin() {
   const [username, setusername] = useState();
   const [password, setpassword] = useState();
 
@@ -17,23 +17,37 @@ export default function Login() {
   const passwordHandler = (event) => {
     setpassword(event.target.value);
   };
-
   const submitHandler = async (event) => {
     const data = {
-      username: username,
+      UID: username,
       password: password,
     };
     console.log(data);
-    
+    const url_old = "/citizen/login";
+    console.log(url_old);
+    const url = "http://localhost:8000/court/login";
 
-    if(username=="12345" && password == "password")
-    {
-      navigate("/profile");
-    }
-    else
-    {
-      alert("Wromg UID or Password");
-    }
+    console.log(url);
+    await axios
+      .post(url, data, { withCredentials: true })
+      .then((response) => {
+        if (response.status === 200) {
+          console.log(response.status);
+          console.log(response.data);
+          localStorage.setItem("court_token", response.data.token);
+          navigate("/court/home");
+        } else if (response.status === 201) {
+          alert("Please Check Username or Password");
+          console.log("error");
+        }
+      })
+      .catch((error) => {
+        if (error.response && error.response.status === 401) {
+          console.log("Wrong UID or Password");
+        } else {
+          console.error(error);
+        }
+      });
   };
 
   return (
